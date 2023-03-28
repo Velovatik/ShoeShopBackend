@@ -2,9 +2,12 @@ package com.velov.shoeshop.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "manufacturers")
-public class Manufacturers {
+public class Manufacturer {
     @Id
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,14 +22,35 @@ public class Manufacturers {
     @Column(name = "Telephone")
     private String telephone;
 
-    public Manufacturers() {
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
+            CascadeType.REFRESH, CascadeType.MERGE},
+            mappedBy = "manufacturer")
+    private List<Good> goods;
+
+    public Manufacturer() {
 
     }
 
-    public Manufacturers(String manufacturerName, String address, String telephone) {
+    public Manufacturer(String manufacturerName, String address, String telephone) {
         this.manufacturerName = manufacturerName;
         this.address = address;
         this.telephone = telephone;
+    }
+
+    public void addGoodToManufacturer(Good good) {
+        if (goods == null) {
+            goods = new ArrayList<>();
+        }
+        goods.add(good);
+        good.setManufacturer(this);
+    }
+
+    public List<Good> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(List<Good> goods) {
+        this.goods = goods;
     }
 
     public int getId() {
