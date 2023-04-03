@@ -3,24 +3,25 @@ package com.velov.shoeshop.entities;
 import java.io.Serializable;
 
 public class SizeJson implements Serializable {
+    //Refactor with int values instead of String
 
-    private int size;
-
-    private int quantity;
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+//    private String size;
+//
+//    private String quantity;
+//
+//    public String getSize() {
+//        return size;
+//    }
+//
+//    public void setSize(String size) {
+//        this.size = size;
+//    }
+//
+//    public String getQuantity() {
+//        return quantity;
+//    }
+//
+//    public void setQuantity(String quantity) {
+//        this.quantity = quantity;
+//    }
 }

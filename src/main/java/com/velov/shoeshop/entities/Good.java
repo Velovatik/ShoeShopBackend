@@ -15,15 +15,17 @@ public class Good {
     private String title;
 
     @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "size")
     private SizeJson sizeJson;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "sex")
     private sexType sexType;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
     CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinColumn(name = "ManufacturerId")
-    Manufacturer manufacturer; //Many goods can refer to one manufacturer
+    @JoinColumn(name = "Manufacturerid")
+    Manufacturer manufacturer; //Many goods can` refer to one manufacturer
 
     public Good() {
 
