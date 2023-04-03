@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "goods")
 public class Good {
@@ -12,11 +15,8 @@ public class Good {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
+    @Column(name = "Title")
     private String title;
-
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "size")
-    private SizeJson sizeJson;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "sex")
@@ -24,16 +24,25 @@ public class Good {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
     CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinColumn(name = "Manufacturerid")
-    Manufacturer manufacturer; //Many goods can` refer to one manufacturer
+    @JoinColumn(name = "ManufacturerId")
+    Manufacturer manufacturer; //Many goods can refer to one manufacturer
+
+    @OneToMany(cascade = CascadeType.ALL) //Uni-directional reference to size array
+    @JoinColumn(name = "goodId")
+    List<Size> sizes;
+
+    public void addSizeToGood(Size size) {
+        if (sizes == null) sizes = new ArrayList<>();
+        sizes.add(size);
+        
+    }
 
     public Good() {
 
     }
 
-    public Good(String title, SizeJson sizeJson, com.velov.shoeshop.entities.sexType sexType, Manufacturer manufacturer) {
+    public Good(String title, com.velov.shoeshop.entities.sexType sexType, Manufacturer manufacturer) {
         this.title = title;
-        this.sizeJson = sizeJson;
         this.sexType = sexType;
         this.manufacturer = manufacturer;
     }
@@ -48,14 +57,6 @@ public class Good {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public SizeJson getSizeJson() {
-        return sizeJson;
-    }
-
-    public void setSizeJson(SizeJson sizeJson) {
-        this.sizeJson = sizeJson;
     }
 
     public com.velov.shoeshop.entities.sexType getSexType() {
@@ -79,7 +80,6 @@ public class Good {
         return "Goods{" +
                 "Id=" + Id +
                 ", title='" + title + '\'' +
-                ", sizeJson=" + sizeJson +
                 ", sexType=" + sexType +
                 ", manufacturer=" + manufacturer +
                 '}';
