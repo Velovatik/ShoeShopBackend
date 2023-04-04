@@ -1,12 +1,19 @@
 package com.velov.shoeshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "sizes")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Size {
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
@@ -16,17 +23,21 @@ public class Size {
     @Column(name = "Quantity")
     private int quantity;
 
-    @Column(name = "goodId")
+    @Column(name = "goodid")
     private int goodId;
+
+    @JsonManagedReference
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "goodId")
+    Good good;
 
     public Size() {
 
     }
 
-    public Size(int size, int quantity, int goodId) {
+    public Size(int size, int quantity) {
         this.size = size;
         this.quantity = quantity;
-        this.goodId = goodId;
     }
 
     public int getId() {
@@ -45,15 +56,15 @@ public class Size {
         return quantity;
     }
 
+    public Good getGood() {
+        return good;
+    }
+
+    public void setGood(Good good) {
+        this.good = good;
+    }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getGoodId() {
-        return goodId;
-    }
-
-    public void setGoodId(int goodId) {
-        this.goodId = goodId;
     }
 }

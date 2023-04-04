@@ -1,19 +1,22 @@
 package com.velov.shoeshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "goods")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Good {
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
@@ -30,14 +33,16 @@ public class Good {
     @JsonManagedReference //-------------------------------------------------------
     Manufacturer manufacturer; //Many goods can refer to one manufacturer
 
-    @OneToMany(cascade = CascadeType.ALL) //Uni-directional reference to size array
-    @JoinColumn(name = "goodId")
-    List<Size> sizes;
+    @JsonBackReference
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
+            CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "good")  //Uni-directional reference to size array
+            //@JoinColumn(name= "goodid")
+    List<Size> sizes; //Refactor to bi-directional relationship
 
     public void addSizeToGood(Size size) {
         if (sizes == null) sizes = new ArrayList<>();
         sizes.add(size);
-        
+        //size.setGood(this);
     }
 
     public Good() {
