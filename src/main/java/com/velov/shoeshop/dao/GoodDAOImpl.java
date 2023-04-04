@@ -3,6 +3,7 @@ package com.velov.shoeshop.dao;
 import com.velov.shoeshop.entities.Good;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,10 @@ public class GoodDAOImpl implements GoodDAO{
     @Transactional //Spring open and close transactions automatically
     public List<Good> getAllGoods() {
         Session session = entityManager.unwrap(Session.class);
-        List<Good> allGoods = session.createQuery("from Good", Good.class).getResultList(); //Refactor to best practice
+
+        Query<Good> query = session.createQuery("from Good", Good.class);
+
+        List<Good> allGoods = query.getResultList();
 
         return allGoods;
     }

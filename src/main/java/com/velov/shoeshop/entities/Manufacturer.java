@@ -1,5 +1,7 @@
 package com.velov.shoeshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class Manufacturer {
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
             CascadeType.REFRESH, CascadeType.MERGE},
             mappedBy = "manufacturer")
+    @JsonBackReference//----------------------------------------------------------
     private List<Good> goods;
 
     public Manufacturer() {

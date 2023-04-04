@@ -1,5 +1,7 @@
 package com.velov.shoeshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -25,6 +27,7 @@ public class Good {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
     CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "ManufacturerId")
+    @JsonManagedReference //-------------------------------------------------------
     Manufacturer manufacturer; //Many goods can refer to one manufacturer
 
     @OneToMany(cascade = CascadeType.ALL) //Uni-directional reference to size array
