@@ -2,7 +2,6 @@ package com.velov.shoeshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
@@ -26,15 +25,12 @@ public class Size {
     @Column(name = "goodid")
     private int goodId;
 
-
-
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "goodId")
     Good good;
 
-
-
+    //Constructors
     public Size() {
 
     }
@@ -44,6 +40,7 @@ public class Size {
         this.quantity = quantity;
     }
 
+    //Getters and setters
     public int getId() {
         return Id;
     }
@@ -60,13 +57,13 @@ public class Size {
         return quantity;
     }
 
-//    public Good getGood() {
-//        return good;
-//    }
-//
-//    public void setGood(Good good) {
-//        this.good = good;
-//    }
+    public Good getGood() {
+        return good;
+    }
+
+    public void setGood(Good good) {
+        this.good = good;
+    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;

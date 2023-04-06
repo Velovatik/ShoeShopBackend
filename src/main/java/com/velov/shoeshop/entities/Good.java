@@ -1,6 +1,5 @@
 package com.velov.shoeshop.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -42,16 +41,13 @@ public class Good {
             CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "good")//Uni-directional reference to size array
     List<Size> sizes;
 
-
-
     public void addSizeToGood(Size size) {
         if (sizes == null) sizes = new ArrayList<>();
         sizes.add(size);
-        //size.setGood(this);
+        size.setGood(this);
     }
 
-
-
+    //Constructors
     public Good() {
 
     }
@@ -62,6 +58,7 @@ public class Good {
         this.manufacturer = manufacturer;
     }
 
+    //Getters and setters
     public int getId() {
         return Id;
     }
@@ -74,11 +71,11 @@ public class Good {
         this.title = title;
     }
 
-    public com.velov.shoeshop.entities.sexType getSexType() {
+    public sexType getSexType() {
         return sexType;
     }
 
-    public void setSexType(com.velov.shoeshop.entities.sexType sexType) {
+    public void setSexType(sexType sexType) {
         this.sexType = sexType;
     }
 
