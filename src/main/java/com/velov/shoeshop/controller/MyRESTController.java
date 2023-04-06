@@ -3,9 +3,7 @@ package com.velov.shoeshop.controller;
 import com.velov.shoeshop.entities.Good;
 import com.velov.shoeshop.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,23 @@ public class MyRESTController {
     public List<Good> showAllGoods() {
         List<Good> allGoods = goodService.getAllGoods();
         return allGoods;
+    }
+
+    @PostMapping("/goods")
+    public Good addNewGood(@RequestBody Good good) {
+        goodService.saveGood(good);
+        return good;
+    }
+
+    @PutMapping("/goods")
+    public Good updateGood(@RequestBody Good good) {
+        goodService.saveGood(good);
+        return good;
+    }
+
+    @DeleteMapping("/goods/{id}")
+    public String deleteGood(@PathVariable int id) {
+        goodService.deleteGood(id);
+        return "Good with id = " + id + "deleted";
     }
 }

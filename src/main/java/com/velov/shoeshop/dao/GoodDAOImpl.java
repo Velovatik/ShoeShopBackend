@@ -28,4 +28,21 @@ public class GoodDAOImpl implements GoodDAO{
 
         return allGoods;
     }
+
+    @Override
+    public void saveGood(Good good) {
+        Session session = entityManager.unwrap(Session.class);
+
+        session.merge(good); //SaveOrUpdate substitute
+    }
+
+    @Override
+    public void deleteGood(int id) {
+        Session session = entityManager.unwrap(Session.class);
+
+        Query<Good> query = session.createQuery("delete from Good " +
+                "where id =: goodId");
+        query.setParameter("goodId", id);
+        query.executeUpdate();
+    }
 }

@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface GoodService {
     public List<Good> getAllGoods();
+
+    public void saveGood(Good good);
+
+    public void deleteGood(int id);
 }
