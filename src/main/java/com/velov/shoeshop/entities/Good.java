@@ -27,23 +27,30 @@ public class Good {
     @Column(name = "sex")
     private sexType sexType;
 
+    /**
+     * proved and it actually works!
+     */
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
     CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "ManufacturerId")
-    @JsonManagedReference //-------------------------------------------------------
+    @JsonManagedReference
     Manufacturer manufacturer; //Many goods can refer to one manufacturer
 
-    @JsonBackReference
+
+    @JsonManagedReference
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
-            CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "good")  //Uni-directional reference to size array
-            //@JoinColumn(name= "goodid")
-    List<Size> sizes; //Refactor to bi-directional relationship
+            CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "good")//Uni-directional reference to size array
+    List<Size> sizes;
+
+
 
     public void addSizeToGood(Size size) {
         if (sizes == null) sizes = new ArrayList<>();
         sizes.add(size);
         //size.setGood(this);
     }
+
+
 
     public Good() {
 

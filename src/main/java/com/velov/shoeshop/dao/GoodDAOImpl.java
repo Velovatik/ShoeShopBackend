@@ -23,7 +23,7 @@ public class GoodDAOImpl implements GoodDAO{
         Session session = entityManager.unwrap(Session.class);
 
         Query<Good> query = session.createQuery("from Good", Good.class);
-//        Query<Good> query =
+
         List<Good> allGoods = query.getResultList();
 
         return allGoods;

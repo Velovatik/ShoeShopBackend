@@ -26,10 +26,14 @@ public class Size {
     @Column(name = "goodid")
     private int goodId;
 
-    @JsonManagedReference
+
+
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "goodId")
     Good good;
+
+
 
     public Size() {
 
@@ -56,13 +60,13 @@ public class Size {
         return quantity;
     }
 
-    public Good getGood() {
-        return good;
-    }
-
-    public void setGood(Good good) {
-        this.good = good;
-    }
+//    public Good getGood() {
+//        return good;
+//    }
+//
+//    public void setGood(Good good) {
+//        this.good = good;
+//    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
