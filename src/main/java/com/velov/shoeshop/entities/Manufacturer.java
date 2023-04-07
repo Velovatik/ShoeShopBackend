@@ -24,10 +24,10 @@ public class Manufacturer {
     @Column(name = "Telephone")
     private String telephone;
 
+    @JsonBackReference
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
             CascadeType.REFRESH, CascadeType.MERGE},
             mappedBy = "manufacturer")
-    @JsonBackReference//----------------------------------------------------------
     private List<Good> goods;
 
     public Manufacturer() {

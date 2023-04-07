@@ -30,10 +30,10 @@ public class Good {
     /**
      * proved and it actually works!
      */
+    @JsonManagedReference
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
     CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "ManufacturerId")
-    @JsonManagedReference
     Manufacturer manufacturer; //Many goods can refer to one manufacturer
 
 
