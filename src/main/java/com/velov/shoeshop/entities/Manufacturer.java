@@ -1,9 +1,6 @@
 package com.velov.shoeshop.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -11,14 +8,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "manufacturers")
-//@JsonIdentityInfo(
-//        generator = ObjectIdGenerators.PropertyGenerator.class,
-//        property = "Id")
 public class Manufacturer {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
 
     @Column(name = "ManufacturerName")
     private String manufacturerName;
@@ -29,10 +23,11 @@ public class Manufacturer {
     @Column(name = "Telephone")
     private String telephone;
 
-    @JsonBackReference
+    //@JsonBackReference
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
             CascadeType.REFRESH, CascadeType.MERGE},
             mappedBy = "manufacturer")
+    @JsonIgnore
     private List<Good> goods;
 
     public Manufacturer() {
@@ -62,7 +57,7 @@ public class Manufacturer {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public String getManufacturerName() {
@@ -92,7 +87,7 @@ public class Manufacturer {
     @Override
     public String toString() {
         return "Manufacturers{" +
-                "Id=" + Id +
+                "Id=" + id +
                 ", manufacturerName='" + manufacturerName + '\'' +
                 ", address='" + address + '\'' +
                 ", telephone='" + telephone + '\'' +

@@ -2,19 +2,21 @@ package com.velov.shoeshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "sizes")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 public class Size {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    @JsonIgnore
+    private int id;
 
     @Column(name = "Size")
     private int size;
@@ -22,8 +24,8 @@ public class Size {
     @Column(name = "Quantity")
     private int quantity;
 
-    @Column(name = "goodid")
-    private int goodId;
+//    @Column(name = "goodid")
+//    private int goodId;
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
@@ -42,7 +44,7 @@ public class Size {
 
     //Getters and setters
     public int getId() {
-        return Id;
+        return id;
     }
 
     public int getSize() {

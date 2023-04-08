@@ -1,5 +1,7 @@
 package com.velov.shoeshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -8,14 +10,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "goods")
-//@JsonIdentityInfo(
-//        generator = ObjectIdGenerators.PropertyGenerator.class,
-//        property = "id")
 public class Good {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    @JsonIgnore
+    private int id;
 
     @Column(name = "Title")
     private String title;
@@ -27,10 +27,11 @@ public class Good {
     /**
      * proved and it actually works!
      */
-    @JsonManagedReference
+    //@JsonManagedReference
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
     CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "ManufacturerId")
+    //@JsonIgnoreProperties
     Manufacturer manufacturer; //Many goods can refer to one manufacturer
 
 
@@ -58,7 +59,7 @@ public class Good {
 
     //Getters and setters
     public int getId() {
-        return Id;
+        return id;
     }
 
     public String getTitle() {
@@ -72,6 +73,7 @@ public class Good {
     public sexType getSexType() {
         return sexType;
     }
+
 
     public void setSexType(sexType sexType) {
         this.sexType = sexType;
@@ -88,7 +90,7 @@ public class Good {
     @Override
     public String toString() {
         return "Goods{" +
-                "Id=" + Id +
+                "Id=" + id +
                 ", title='" + title + '\'' +
                 ", sexType=" + sexType +
                 ", manufacturer=" + manufacturer +
