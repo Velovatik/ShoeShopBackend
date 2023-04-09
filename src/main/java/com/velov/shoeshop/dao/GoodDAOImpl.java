@@ -1,7 +1,6 @@
 package com.velov.shoeshop.dao;
 
 import com.velov.shoeshop.entities.Good;
-import com.velov.shoeshop.entities.Size;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

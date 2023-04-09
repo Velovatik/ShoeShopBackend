@@ -1,7 +1,9 @@
 package com.velov.shoeshop.controller;
 
 import com.velov.shoeshop.entities.Good;
+import com.velov.shoeshop.entities.Manufacturer;
 import com.velov.shoeshop.service.GoodService;
+import com.velov.shoeshop.service.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,9 @@ public class MyRESTController {
 
     @Autowired
     private GoodService goodService;
+
+    @Autowired
+    private ManufacturerService manufacturerService;
 
     @GetMapping("/goods")
     public List<Good> showAllGoods() {
@@ -36,5 +41,12 @@ public class MyRESTController {
     public String deleteGood(@PathVariable int id) {
         goodService.deleteGood(id);
         return "Good with id = " + id + " deleted";
+    }
+
+    @GetMapping("/manufacturers")
+    public List<Manufacturer> showAllManufacturers() {
+        List<Manufacturer> allManufacturers = manufacturerService.getAllManufacturers();
+
+        return allManufacturers;
     }
 }

@@ -27,6 +27,8 @@ public class GoodServiceImpl implements GoodService{
         goodDAO.saveGood(good);
     }
 
+    @Override
+    @Transactional
     public void deleteGood(int id)  {
         goodDAO.deleteGood(id);
     }
