@@ -42,8 +42,8 @@ public class GoodDAOImpl implements GoodDAO{
         Session session = entityManager.unwrap(Session.class);
 
         Query query = session.createQuery("delete from Good " +
-                "where id =: goodid");
-        query.setParameter("goodid", id);
+                "where id =: goodId");
+        query.setParameter("goodId", id);
         query.executeUpdate();
     }
 }

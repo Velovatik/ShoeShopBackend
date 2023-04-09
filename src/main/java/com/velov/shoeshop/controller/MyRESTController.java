@@ -40,7 +40,7 @@ public class MyRESTController {
     @DeleteMapping("/goods/{id}")
     public String deleteGood(@PathVariable int id) {
         goodService.deleteGood(id);
-        return "Good with id = " + id + " deleted";
+        return "Good with id = " + id + " was deleted";
     }
 
     @GetMapping("/manufacturers")
@@ -48,5 +48,17 @@ public class MyRESTController {
         List<Manufacturer> allManufacturers = manufacturerService.getAllManufacturers();
 
         return allManufacturers;
+    }
+
+    @PostMapping("/manufacturers")
+    public Manufacturer addNewManufacturer(@RequestBody Manufacturer manufacturer) {
+        manufacturerService.saveManufacturer(manufacturer);
+        return manufacturer;
+    }
+
+    @DeleteMapping("/manufacturers/{id}")
+    public String deleteManufacturer(@PathVariable int id) {
+        manufacturerService.deleteManufacturer(id);
+        return "Manufacturer with id = " + id + " was deleted";
     }
 }

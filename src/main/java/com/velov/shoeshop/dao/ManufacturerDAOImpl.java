@@ -29,12 +29,18 @@ public class ManufacturerDAOImpl implements ManufacturerDAO {
 
     @Override
     public void saveManufacturer(Manufacturer manufacturer) {
+        Session session = entityManager.unwrap(Session.class);
 
+        session.merge(manufacturer);
     }
 
     @Override
     @Transactional
     public void deleteManufacturer(int id) {
+        Session session = entityManager.unwrap(Session.class);
 
+        Query query = session.createQuery("delete from Manufacturer where id =: manufacturerId");
+        query.setParameter("manufacturerId", id);
+        query.executeUpdate();
     }
 }

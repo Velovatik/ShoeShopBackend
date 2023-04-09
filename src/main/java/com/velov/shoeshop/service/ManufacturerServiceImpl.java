@@ -24,11 +24,12 @@ public class ManufacturerServiceImpl implements ManufacturerService{
     @Transactional
     public void saveManufacturer(Manufacturer manufacturer) {
 
+        manufacturerDAO.saveManufacturer(manufacturer);
     }
 
     @Override
     @Transactional
     public void deleteManufacturer(int id) {
-
+        manufacturerDAO.deleteManufacturer(id);
     }
 }
