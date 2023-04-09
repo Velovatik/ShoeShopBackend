@@ -14,15 +14,18 @@ public class Good {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
+    //@JsonIgnore
     private int id;
 
     @Column(name = "Title")
     private String title;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "sex")
+//    private sexType sexType;
+
     @Column(name = "sex")
-    private sexType sexType;
+    private String sex;
 
     /**
      * proved and it actually works!
@@ -53,8 +56,9 @@ public class Good {
 
     public Good(String title, com.velov.shoeshop.entities.sexType sexType, Manufacturer manufacturer) {
         this.title = title;
-        this.sexType = sexType;
+        //this.sexType = sexType;
         this.manufacturer = manufacturer;
+        this.sex = sex;
     }
 
     //Getters and setters
@@ -70,13 +74,22 @@ public class Good {
         this.title = title;
     }
 
-    public sexType getSexType() {
-        return sexType;
+//    public sexType getSexType() {
+//        return sexType;
+//    }
+
+
+//    public void setSexType(sexType sexType) {
+//        this.sexType = sexType;
+//    }
+
+
+    public String getSex() {
+        return sex;
     }
 
-
-    public void setSexType(sexType sexType) {
-        this.sexType = sexType;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public Manufacturer getManufacturer() {
@@ -92,7 +105,7 @@ public class Good {
         return "Goods{" +
                 "Id=" + id +
                 ", title='" + title + '\'' +
-                ", sexType=" + sexType +
+//                ", sexType=" + sexType +
                 ", manufacturer=" + manufacturer +
                 '}';
     }
