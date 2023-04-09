@@ -35,6 +35,6 @@ public class MyRESTController {
     @DeleteMapping("/goods/{id}")
     public String deleteGood(@PathVariable int id) {
         goodService.deleteGood(id);
-        return "Good with id = " + id + "deleted";
+        return "Good with id = " + id + " deleted";
     }
 }
