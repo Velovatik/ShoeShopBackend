@@ -39,9 +39,8 @@ public class Good {
 
 
     @JsonManagedReference
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
-            CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "good")//Uni-directional reference to size array
-    List<Size> sizes;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "good")//Uni-directional reference to size array
+    List<Size> sizes; //Change CascadeType in case delete size cause deletion of Good (in future)
 
     public void addSizeToGood(Size size) {
         if (sizes == null) sizes = new ArrayList<>();

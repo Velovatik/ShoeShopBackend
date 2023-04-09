@@ -36,11 +36,13 @@ public class GoodDAOImpl implements GoodDAO{
         session.merge(good); //SaveOrUpdate substitute
     }
 
+
     @Override
+    @Transactional
     public void deleteGood(int id) {
         Session session = entityManager.unwrap(Session.class);
 
-        Query<Good> query = session.createQuery("delete from Good " +
+        Query query = session.createQuery("delete from Good " +
                 "where id =: goodid");
         query.setParameter("goodid", id);
         query.executeUpdate();
