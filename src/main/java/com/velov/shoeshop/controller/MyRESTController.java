@@ -56,6 +56,12 @@ public class MyRESTController {
         return manufacturer;
     }
 
+    @PutMapping("/manufacturers")
+    public Manufacturer updateManufacturer(@RequestBody Manufacturer manufacturer) {
+        manufacturerService.saveManufacturer(manufacturer);
+        return manufacturer;
+    }
+
     @DeleteMapping("/manufacturers/{id}")
     public String deleteManufacturer(@PathVariable int id) {
         manufacturerService.deleteManufacturer(id);
