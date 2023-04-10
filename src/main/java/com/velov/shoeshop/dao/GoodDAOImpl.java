@@ -1,13 +1,8 @@
 package com.velov.shoeshop.dao;
 
 import com.velov.shoeshop.entities.Good;
-import com.velov.shoeshop.entities.Size;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaUpdate;
-import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -47,7 +42,7 @@ public class GoodDAOImpl implements GoodDAO{
         Session session = entityManager.unwrap(Session.class);
 
         Query query = session.createQuery("delete from Good " +
-                "where id =: goodId");
+                "where id = :goodId");
         query.setParameter("goodId", id);
         query.executeUpdate();
     }
@@ -56,10 +51,9 @@ public class GoodDAOImpl implements GoodDAO{
     @Transactional
     public void sellGood(int id, int size, int amount) {
         Session session = entityManager.unwrap(Session.class);
-        Transaction tx = session.beginTransaction();
 
         Query query = session.createQuery("update Size s set s.quantity = (s.quantity - :amount) " +
-                "where s.size =: size and s.goodId =: id");
+                "where s.size = :size and s.goodId = :id");
         query.setParameter("size", size);
         query.setParameter("id", id);
         query.setParameter("amount", amount);
