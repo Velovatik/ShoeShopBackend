@@ -10,4 +10,6 @@ public interface GoodDAO {
     public void saveGood(Good good);
 
     public void deleteGood(int id);
+
+    public void sellGood(int id, int size, int amount);
 }

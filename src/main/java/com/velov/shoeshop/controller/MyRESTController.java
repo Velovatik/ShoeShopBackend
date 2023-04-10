@@ -2,6 +2,7 @@ package com.velov.shoeshop.controller;
 
 import com.velov.shoeshop.entities.Good;
 import com.velov.shoeshop.entities.Manufacturer;
+import com.velov.shoeshop.entities.Size;
 import com.velov.shoeshop.service.GoodService;
 import com.velov.shoeshop.service.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,11 @@ public class MyRESTController {
     public String deleteManufacturer(@PathVariable int id) {
         manufacturerService.deleteManufacturer(id);
         return "Manufacturer with id = " + id + " was deleted";
+    }
+
+    @PutMapping("/purchase/{id}/{size}/{amount}")
+    public String sellGood(@PathVariable int id, @PathVariable int size, @PathVariable int amount) {
+        goodService.sellGood(id, size, amount);
+        return "Sold " + amount + " shoes " + size + " size with id = " + id;
     }
 }

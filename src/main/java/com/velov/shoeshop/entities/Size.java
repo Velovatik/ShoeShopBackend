@@ -24,8 +24,8 @@ public class Size {
     @Column(name = "Quantity")
     private int quantity;
 
-//    @Column(name = "goodid")
-//    private int goodId;
+    @Column(name = "goodid") //Check else
+    private int goodId;
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)

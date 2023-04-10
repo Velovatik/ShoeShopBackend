@@ -32,4 +32,10 @@ public class GoodServiceImpl implements GoodService{
     public void deleteGood(int id)  {
         goodDAO.deleteGood(id);
     }
+
+    @Override
+    @Transactional
+    public void sellGood(int id, int size, int amount) {
+        goodDAO.sellGood(id, size, amount);
+    }
 }
