@@ -57,5 +57,6 @@ public class GoodDAOImpl implements GoodDAO{
         query.setParameter("size", size);
         query.setParameter("id", id);
         query.setParameter("amount", amount);
+        query.executeUpdate();
     }
 }

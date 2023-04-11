@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("http://localhost:5173/")
 public class MyRESTController {
 
     @Autowired
@@ -44,6 +45,12 @@ public class MyRESTController {
         return "Good with id = " + id + " was deleted";
     }
 
+    @PutMapping("/purchase/{id}/{size}/{amount}")
+    public String sellGood(@PathVariable int id, @PathVariable int size, @PathVariable int amount) {
+        goodService.sellGood(id, size, amount);
+        return "Sold " + amount + " pair(s) of shoes size " + size + " with id = " + id;
+    }
+
     @GetMapping("/manufacturers")
     public List<Manufacturer> showAllManufacturers() {
         List<Manufacturer> allManufacturers = manufacturerService.getAllManufacturers();
@@ -67,11 +74,5 @@ public class MyRESTController {
     public String deleteManufacturer(@PathVariable int id) {
         manufacturerService.deleteManufacturer(id);
         return "Manufacturer with id = " + id + " was deleted";
-    }
-
-    @PutMapping("/purchase/{id}/{size}/{amount}")
-    public String sellGood(@PathVariable int id, @PathVariable int size, @PathVariable int amount) {
-        goodService.sellGood(id, size, amount);
-        return "Sold " + amount + " shoes " + size + " size with id = " + id;
     }
 }
