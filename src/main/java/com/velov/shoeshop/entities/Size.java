@@ -24,7 +24,7 @@ public class Size {
     @Column(name = "Quantity")
     private int quantity;
 
-    @Column(name = "goodid") //Check else
+    @Column(name = "goodid", insertable = false, updatable = false) //Check else
     private int goodId;
 
     @JsonBackReference
