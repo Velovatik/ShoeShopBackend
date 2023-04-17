@@ -18,9 +18,9 @@ public class Mapper {
         List<Integer> sizes = good
                 .getSizes()
                 .stream()
-                .map(Size::getSize)
+                .map(Size::getId)
                 .collect(toList());
 
-        return new GoodDTO(title, sex, manufacturer, sizes);
+        return null; //new GoodDTO(title, sex, manufacturer);
     }
 }

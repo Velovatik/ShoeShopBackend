@@ -11,10 +11,9 @@ public class GoodCreationDTO {
 
     private String title;
 
-
     private String sex;
 
-    Manufacturer manufacturer; //Manufacturer id only
+    int manufacturer; //Manufacturer id only
 
     List<Size> sizes;
 
@@ -23,11 +22,11 @@ public class GoodCreationDTO {
 
     }
 
-    public GoodCreationDTO(String title, com.velov.shoeshop.entities.sexType sexType, Manufacturer manufacturer) {
+    public GoodCreationDTO(String title, String sex, int manufacturer, List<Size> sizes) {
         this.title = title;
-        //this.sexType = sexType;
-        this.manufacturer = manufacturer;
         this.sex = sex;
+        this.manufacturer = manufacturer;
+        this.sizes = sizes;
     }
 
     //Getters and setters
@@ -51,13 +50,13 @@ public class GoodCreationDTO {
         this.sex = sex;
     }
 
-    public Manufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
+//    public Manufacturer getManufacturer() {
+//        return manufacturer;
+//    }
+//
+//    public void setManufacturer(Manufacturer manufacturer) {
+//        this.manufacturer = manufacturer;
+//    }
 
     public List<Size> getSizes() {
         return sizes;

@@ -28,8 +28,9 @@ public class MyRESTController {
     }
 
     @PostMapping("/goods")
-    public GoodCreationDTO addNewGood(@RequestBody GoodCreationDTO goodDTO) {
-
+    public Good addNewGood(@RequestBody Good good) {
+        goodService.saveGood(good);
+        return good;
     }
 
     @PutMapping("/goods")

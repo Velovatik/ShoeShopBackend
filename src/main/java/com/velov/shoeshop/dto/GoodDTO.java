@@ -14,7 +14,7 @@ public class GoodDTO {
 
     private Manufacturer manufacturer; //needs Id only
 
-    List<Size> sizes;
+    List<Integer> sizes;
 
     //Constructor
 
@@ -22,7 +22,7 @@ public class GoodDTO {
         this.title = title;
         this.sex = sex;
         this.manufacturer = manufacturer;
-        this.sizes = sizes;
+        //this.sizes = sizes;
     }
 
 
@@ -56,11 +56,11 @@ public class GoodDTO {
         this.manufacturer = manufacturer;
     }
 
-    public List<Size> getSizes() {
-        return sizes;
-    }
+//    public List<Size> getSizes() {
+//        return sizes;
+//    }
 
-    public void setSizes(List<Size> sizes) {
-        this.sizes = sizes;
-    }
+//    public void setSizes(List<Size> sizes) {
+//        this.sizes = sizes;
+//    }
 }
