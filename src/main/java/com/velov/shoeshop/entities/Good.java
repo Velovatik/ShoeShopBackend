@@ -53,11 +53,11 @@ public class Good {
 
     }
 
-    public Good(String title, com.velov.shoeshop.entities.sexType sexType, Manufacturer manufacturer) {
+    public Good(String title, String sex, Manufacturer manufacturer, List<Size> sizes) {
         this.title = title;
-        //this.sexType = sexType;
-        this.manufacturer = manufacturer;
         this.sex = sex;
+        this.manufacturer = manufacturer;
+        this.sizes = sizes;
     }
 
     //Getters and setters
@@ -97,6 +97,14 @@ public class Good {
 
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    public List<Size> getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(List<Size> sizes) {
+        this.sizes = sizes;
     }
 
     @Override
