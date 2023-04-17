@@ -31,7 +31,7 @@ public class GoodDAOImpl implements GoodDAO{
     @Override
     public void saveGood(Good good) {
         Session session = entityManager.unwrap(Session.class);
-
+        System.out.println(good);
         session.merge(good); //SaveOrUpdate substitute
     }
 

@@ -11,7 +11,6 @@ import java.util.List;
 @Entity
 @Table(name = "goods")
 public class Good {
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +32,11 @@ public class Good {
     //@JsonManagedReference
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
     CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinColumn(name = "ManufacturerId")
-    //@JsonIgnoreProperties
+    @JoinColumn(name = "ManufacturerId", insertable = false, updatable = false)
     Manufacturer manufacturer; //Many goods can refer to one manufacturer
 
+    @Column(name = "manufacturerId")
+    private int manufacturerId;
 
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "good")//Uni-directional reference to size array
@@ -105,6 +105,14 @@ public class Good {
 
     public void setSizes(List<Size> sizes) {
         this.sizes = sizes;
+    }
+
+    public int getManufacturerId() {
+        return manufacturerId;
+    }
+
+    public void setManufacturerId(int manufacturerId) {
+        this.manufacturerId = manufacturerId;
     }
 
     @Override

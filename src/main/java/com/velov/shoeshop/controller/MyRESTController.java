@@ -1,6 +1,5 @@
 package com.velov.shoeshop.controller;
 
-import com.velov.shoeshop.dto.GoodCreationDTO;
 import com.velov.shoeshop.entities.Good;
 import com.velov.shoeshop.entities.Manufacturer;
 import com.velov.shoeshop.service.GoodService;
