@@ -11,10 +11,10 @@ import java.util.List;
 @Entity
 @Table(name = "goods")
 public class Good {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@JsonIgnore
     private int id;
 
     @Column(name = "Title")

@@ -8,9 +8,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "sizes")
-//@JsonIdentityInfo(
-//        generator = ObjectIdGenerators.PropertyGenerator.class,
-//        property = "id")
 public class Size {
     @Id
     @Column(name = "id")

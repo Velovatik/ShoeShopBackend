@@ -56,11 +56,4 @@ public class GoodDTO {
         this.manufacturer = manufacturer;
     }
 
-//    public List<Size> getSizes() {
-//        return sizes;
-//    }
-
-//    public void setSizes(List<Size> sizes) {
-//        this.sizes = sizes;
-//    }
 }
