@@ -120,6 +120,7 @@ public class Good {
         return "Goods{" +
                 "Id=" + id +
                 ", title='" + title + '\'' +
+                "sex=" + sex +
 //                ", sexType=" + sexType +
                 ", manufacturer=" + manufacturer +
                 '}';

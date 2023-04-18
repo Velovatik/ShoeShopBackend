@@ -29,6 +29,15 @@ public class GoodDAOImpl implements GoodDAO{
     }
 
     @Override
+    public Good getGood(int id) {
+        Session session = entityManager.unwrap(Session.class);
+
+        Good good = session.get(Good.class, id);
+
+        return good;
+    }
+
+    @Override
     public void saveGood(Good good) {
         Session session = entityManager.unwrap(Session.class);
         System.out.println(good);

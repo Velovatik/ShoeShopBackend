@@ -38,6 +38,13 @@ public class MyRESTController {
         return good;
     }
 
+    @GetMapping("goods/{id}")
+    public Good getGood(@PathVariable int id) {
+        Good good = goodService.getGood(id);
+
+        return good;
+    }
+
     @DeleteMapping("/goods/{id}")
     public String deleteGood(@PathVariable int id) {
         goodService.deleteGood(id);

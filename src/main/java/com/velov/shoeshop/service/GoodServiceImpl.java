@@ -21,6 +21,11 @@ public class GoodServiceImpl implements GoodService{
     }
 
     @Override
+    public Good getGood(int id) {
+        return goodDAO.getGood(id);
+    }
+
+    @Override
     @Transactional
     public void saveGood(Good good) {
 
