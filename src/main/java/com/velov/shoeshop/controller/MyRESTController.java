@@ -32,7 +32,7 @@ public class MyRESTController {
         return good;
     }
 
-    @PutMapping("/goods")
+    @PatchMapping("/goods")
     public Good updateGood(@RequestBody Good good) {
         goodService.saveGood(good);
         return good;
