@@ -12,6 +12,7 @@ public class Size {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int id;
 
     @Column(name = "Size")
@@ -23,10 +24,10 @@ public class Size {
     @Column(name = "goodid", insertable = false, updatable = false) //Check else
     private int goodId;
 
-    @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "goodId")
-    Good good;
+//    @JsonBackReference
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "goodId")
+//    Good good;
 
     //Constructors
     public Size() {
@@ -55,13 +56,13 @@ public class Size {
         return quantity;
     }
 
-    public Good getGood() {
-        return good;
-    }
+//    public Good getGood() {
+//        return good;
+//    }
 
-    public void setGood(Good good) {
-        this.good = good;
-    }
+//    public void setGood(Good good) {
+//        this.good = good;
+//    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;

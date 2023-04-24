@@ -38,14 +38,14 @@ public class Good {
     @Column(name = "manufacturerId")
     private int manufacturerId;
 
-    @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "good")//Uni-directional reference to size array
+    @JoinColumn(name = "goodId")
+    @OneToMany(cascade = CascadeType.ALL)//Uni-directional reference to size array
     List<Size> sizes; //Change CascadeType in case delete size cause deletion of Good (in future)
 
     public void addSizeToGood(Size size) {
         if (sizes == null) sizes = new ArrayList<>();
         sizes.add(size);
-        size.setGood(this);
+        //size.setGood(this);
     }
 
     //Constructors
