@@ -12,7 +12,6 @@ public class Size {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int id;
 
     @Column(name = "Size")

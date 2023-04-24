@@ -2,6 +2,7 @@ package com.velov.shoeshop.controller;
 
 import com.velov.shoeshop.entities.Good;
 import com.velov.shoeshop.entities.Manufacturer;
+import com.velov.shoeshop.entities.Size;
 import com.velov.shoeshop.service.GoodService;
 import com.velov.shoeshop.service.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
