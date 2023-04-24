@@ -7,6 +7,8 @@ import java.util.List;
 public interface ManufacturerDAO {
     public List<Manufacturer> getAllManufacturers();
 
+    public Manufacturer getManufacturer(int id);
+
     public void saveManufacturer(Manufacturer manufacturer);
 
     public void deleteManufacturer(int id);

@@ -1,5 +1,6 @@
 package com.velov.shoeshop.dao;
 
+import com.velov.shoeshop.entities.Good;
 import com.velov.shoeshop.entities.Manufacturer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -25,6 +26,15 @@ public class ManufacturerDAOImpl implements ManufacturerDAO {
         List<Manufacturer> manufacturers = query.getResultList();
 
         return manufacturers;
+    }
+
+    @Override
+    public Manufacturer getManufacturer(int id) {
+        Session session = entityManager.unwrap(Session.class);
+
+        Manufacturer manufacturer = session.get(Manufacturer.class, id);
+
+        return manufacturer;
     }
 
     @Override

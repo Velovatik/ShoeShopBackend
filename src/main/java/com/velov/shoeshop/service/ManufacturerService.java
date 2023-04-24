@@ -8,6 +8,8 @@ import java.util.List;
 public interface ManufacturerService {
     public List<Manufacturer> getAllManufacturers();
 
+    public Manufacturer getManufacturer(int id);
+
     public void saveManufacturer(Manufacturer manufacturer);
 
     public void deleteManufacturer(int id);

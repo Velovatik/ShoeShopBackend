@@ -71,9 +71,16 @@ public class MyRESTController {
         return manufacturer;
     }
 
-    @PutMapping("/manufacturers")
+    @PatchMapping("/manufacturers")
     public Manufacturer updateManufacturer(@RequestBody Manufacturer manufacturer) {
         manufacturerService.saveManufacturer(manufacturer);
+        return manufacturer;
+    }
+
+    @GetMapping("manufacturers/{id}")
+    public Manufacturer getManufacturer(@PathVariable int id) {
+        Manufacturer manufacturer = manufacturerService.getManufacturer(id);
+
         return manufacturer;
     }
 

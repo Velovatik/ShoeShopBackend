@@ -21,6 +21,11 @@ public class ManufacturerServiceImpl implements ManufacturerService{
     }
 
     @Override
+    public Manufacturer getManufacturer(int id) {
+        return manufacturerDAO.getManufacturer(id);
+    }
+
+    @Override
     @Transactional
     public void saveManufacturer(Manufacturer manufacturer) {
 
