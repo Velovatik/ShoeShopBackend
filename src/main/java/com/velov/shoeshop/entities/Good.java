@@ -26,6 +26,9 @@ public class Good {
     @Column(name = "sex")
     private String sex;
 
+    @Column(name = "price")
+    private int price;
+
     /**
      * proved and it actually works!
      */
@@ -53,11 +56,12 @@ public class Good {
 
     }
 
-    public Good(String title, String sex, Manufacturer manufacturer, List<Size> sizes) {
+    public Good(String title, String sex, int price, Manufacturer manufacturer, List<Size> sizes) {
         this.title = title;
         this.sex = sex;
         this.manufacturer = manufacturer;
         this.sizes = sizes;
+        this.price = price;
     }
 
     //Getters and setters
@@ -113,6 +117,14 @@ public class Good {
 
     public void setManufacturerId(int manufacturerId) {
         this.manufacturerId = manufacturerId;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override
